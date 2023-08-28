@@ -2,13 +2,13 @@ pipeline {
 	agent any
 	tools {
 	    maven "MAVEN3"
-	    jdk "OracleJDK8"
+	    jdk "OracleJDK11"
 	}
 
 	stages {
 	    stage('Fetch code') {
             steps {
-               git branch: 'vp-rem', url: 'https://github.com/devopshydclub/vprofile-repo.git'
+               git branch: 'main', url: 'https://github.com/hkhcoder/vprofile-project.git'
             }
 
 	    }
@@ -21,7 +21,7 @@ pipeline {
 	        post {
 	           success {
 	              echo 'Now Archiving it...'
-	              archiveArtifacts artifacts: '**/target/*.war'
+	              archiveArtifacts artifacts: '**/*.war'
 	           }
 	        }
 	    }
